@@ -1,0 +1,10 @@
+<div *ngIf="covers?.length">
+  <p *ngFor="let cover of covers" style="display: grid">
+    <label>{{cover.name}}</label>
+    <img [src]="cover.coverUrl" [width]="200" />
+  </p>
+</div>
+
+<p *ngIf="covers?.length==0">
+  No movie checked
+</p>
