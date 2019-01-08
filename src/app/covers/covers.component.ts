@@ -35,7 +35,6 @@ export class CoversComponent implements OnInit, OnChanges {
   }
 
   onCheckboxModelChange(changeImageSize) {
-    console.log(changeImageSize);
     this.store.dispatch({
       type: "TOGGLE_IMAGE_SIZE",
       payload: changeImageSize

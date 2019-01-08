@@ -43,7 +43,6 @@ export class MoviesComponent implements OnInit, OnChanges {
 
   // handle movies state
   handleMoviesCheckedState(stateMovies) {
-    console.log("handleMoviesState: ", stateMovies);
     if (stateMovies) {
       this.movies.forEach(movie => stateMovies.find(stateMovie => stateMovie.id == movie.id) ? movie.checked = true : null)
     }

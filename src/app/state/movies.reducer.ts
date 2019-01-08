@@ -3,7 +3,6 @@ export function moviesReducer(state, action) {
         case "HANDLE_CHECKED_MOVIES":
             return handleMovieCheckedState(state, action);
         default:
-            console.log("default");
             return state;
     }
 }
@@ -17,7 +16,5 @@ function handleMovieCheckedState(state, action){
         action.payload.checked = !action.payload.checked;
         movies.push(action.payload);
     }
-    console.log("Existing state: ", movies);
-    console.log("Payload: ", action.payload);
     return movies;
 }
