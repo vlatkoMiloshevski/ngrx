@@ -1,7 +1,9 @@
+<mat-checkbox [(ngModel)]="checked" (ngModelChange)="onCheckboxModelChange($event)">Check me!</mat-checkbox>
+
 <div *ngIf="covers?.length">
   <p *ngFor="let cover of covers" style="display: grid">
     <label>{{cover.name}}</label>
-    <img [src]="cover.coverUrl" [width]="200" />
+    <img [src]="cover.coverUrl" [width]="imageWidth" />
   </p>
 </div>
 

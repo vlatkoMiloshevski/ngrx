@@ -12,6 +12,8 @@ import { Covers } from '../models/covers';
 export class CoversComponent implements OnInit, OnChanges {
 
   covers: Array<Covers> = [];
+  checked: boolean;
+  imageWidth: string;
 
   constructor(
     private store: Store<any>,
@@ -23,14 +25,36 @@ export class CoversComponent implements OnInit, OnChanges {
       this.drawCheckedMoviesCovers.bind(this),
       this.errorService.errorHandler.bind(this)
     )
+    this.store.select('covers').subscribe(
+      this.handleImagesSize.bind(this),
+      this.errorService.errorHandler.bind(this)
+    )
   }
 
   ngOnChanges(changes: SimpleChanges) {
   }
 
+  onCheckboxModelChange(changeImageSize) {
+    console.log(changeImageSize);
+    this.store.dispatch({
+      type: "TOGGLE_IMAGE_SIZE",
+      payload: changeImageSize
+    })
+  }
+
   drawCheckedMoviesCovers(movies: Array<Movie>) {
     if (movies) {
       movies.forEach(movie => movie.checked ? this.covers.push({ name: movie.name, coverUrl: movie.coverUrl }) : null);
+    }
+  }
+
+  handleImagesSize(covers) {
+    this.imageWidth = "200";
+    this.checked = false;
+
+    if (covers) {
+      this.imageWidth = covers.showLargeImages ? "400" : "200";
+      this.checked = covers.showLargeImages ? true : false;
     }
   }
 
