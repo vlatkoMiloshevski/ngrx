@@ -2,8 +2,7 @@
 
 <ul>
   <li *ngFor="let movie of movies">
-    <input type="checkbox" [ngModel]="movie.checked" (ngModelChange)="changeCheckedValue(movie)">
-    <span>{{movie.name}}</span>
+    <mat-checkbox [(ngModel)]="movie.checked" (ngModelChange)="changeCheckedValue($event)">{{movie.name}}</mat-checkbox>
   </li>
 </ul>
 

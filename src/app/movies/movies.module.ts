@@ -9,6 +9,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { HttpModule } from "@angular/http";
 import { BrowserModule } from "@angular/platform-browser";
 import { moviesReducer } from "../state/movies.reducer";
+import { MaterialModule } from "../shared/material.module";
 
 
 const moviesRoutes: Routes = [];
@@ -18,6 +19,7 @@ const moviesRoutes: Routes = [];
         MoviesComponent
     ],
     imports: [
+        MaterialModule,
         HttpClientModule,
         HttpModule,
         BrowserModule,
