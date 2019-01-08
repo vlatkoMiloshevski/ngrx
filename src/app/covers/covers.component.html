@@ -1,4 +1,7 @@
-<mat-checkbox [(ngModel)]="checked" (ngModelChange)="onCheckboxModelChange($event)">Check me!</mat-checkbox>
+<mat-checkbox *ngIf="covers?.length" [(ngModel)]="checked" (ngModelChange)="onCheckboxModelChange($event)">
+  <span *ngIf="checked">Pick small sized images</span>
+  <span *ngIf="!checked">Pick large sized images</span>
+</mat-checkbox>
 
 <div *ngIf="covers?.length">
   <p *ngFor="let cover of covers" style="display: grid">
@@ -8,5 +11,5 @@
 </div>
 
 <p *ngIf="covers?.length==0">
-  No movie checked
+  No movies checked
 </p>

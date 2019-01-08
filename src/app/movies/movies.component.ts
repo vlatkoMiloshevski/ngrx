@@ -11,7 +11,6 @@ import { ApiService } from '../services/api-service';
 })
 export class MoviesComponent implements OnInit, OnChanges {
   movies: Array<Movie> = [];
-  showCheckedMovies: boolean;
 
   constructor(
     private store: Store<any>,
@@ -46,7 +45,6 @@ export class MoviesComponent implements OnInit, OnChanges {
     if (stateMovies) {
       this.movies.forEach(movie => stateMovies.find(stateMovie => stateMovie.id == movie.id) ? movie.checked = true : null)
     }
-    this.showCheckedMovies = this.movies.filter(movie => movie.checked).length ? true : false;
   }
 
   //loading movies helper
