@@ -3,6 +3,8 @@ import { Movie } from '../models/movie';
 import { Store } from '@ngrx/store';
 import { ErrorService } from '../services/error-handler.service';
 import { Covers } from '../models/covers';
+import { CoverState } from '../state/covers.reducer';
+import { MovieState, moviesReducer } from '../state/movies.reducer';
 
 @Component({
   selector: 'app-covers',
@@ -16,7 +18,7 @@ export class CoversComponent implements OnInit, OnChanges {
   imageWidth: string;
 
   constructor(
-    private store: Store<any>,
+    private store: Store<MovieState>,
     private errorService: ErrorService
   ) { }
 
@@ -41,9 +43,9 @@ export class CoversComponent implements OnInit, OnChanges {
     })
   }
 
-  drawCheckedMoviesCovers(movies: Array<Movie>) {
-    if (movies) {
-      movies.forEach(movie => movie.checked ? this.covers.push({ name: movie.name, coverUrl: movie.coverUrl }) : null);
+  drawCheckedMoviesCovers(state: MovieState) {
+    if (state && state.movies) {
+      state.movies.forEach(movie => movie.checked ? this.covers.push({ name: movie.name, coverUrl: movie.coverUrl }) : null);
     }
   }
 

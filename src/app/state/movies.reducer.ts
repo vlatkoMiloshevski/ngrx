@@ -1,4 +1,6 @@
-export function moviesReducer(state, action) {
+import { Movie } from "../models/movie";
+
+export function moviesReducer(state, action): MovieState {
     switch (action.type) {
         case "HANDLE_CHECKED_MOVIES":
             return handleMovieCheckedState(state, action);
@@ -7,14 +9,22 @@ export function moviesReducer(state, action) {
     }
 }
 
-function handleMovieCheckedState(state, action){
-    let movies = state == undefined ? [] : [...state];
+function handleMovieCheckedState(state, action) {
+    let movies = state == undefined ? [] : state.movies;
     if (movies.find(movie => movie.id == action.payload.id)) {
-        movies.splice(movies.indexOf(action.payload));
+        movies.splice(movies.map(x => x.id).indexOf(action.payload.id), 1);
     }
     else {
         action.payload.checked = !action.payload.checked;
         movies.push(action.payload);
     }
-    return movies;
+    console.log(movies)
+    return {
+        ...state,
+        movies
+    }
+}
+
+export interface MovieState {
+    movies: Array<Movie>;
 }

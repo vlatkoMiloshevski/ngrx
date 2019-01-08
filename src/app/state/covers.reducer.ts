@@ -1,4 +1,4 @@
-export function coversReducer(state, action) {
+export function coversReducer(state, action): CoverState {
     switch (action.type) {
         case "TOGGLE_IMAGE_SIZE":
             return {
@@ -9,4 +9,8 @@ export function coversReducer(state, action) {
             console.log("default");
             return state;
     }
+}
+
+export interface CoverState {
+    showLargeImages: boolean
 }
