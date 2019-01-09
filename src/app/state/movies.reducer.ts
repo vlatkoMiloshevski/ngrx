@@ -1,6 +1,7 @@
-import { MovieStateModel } from "./movies-state.model";
+import { MovieStateModel, initMovieStateModel } from "./movies-state.model";
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-export function moviesReducer(state, action): MovieStateModel {
+export function moviesReducer(state: MovieStateModel = initMovieStateModel, action): MovieStateModel {
     switch (action.type) {
         case "HANDLE_CHECKED_MOVIES":
             return handleMovieCheckedState(state, action);
@@ -23,3 +24,10 @@ function handleMovieCheckedState(state, action) {
         movies
     }
 }
+
+const getMovieFeatureState = createFeatureSelector<MovieStateModel>('movies');
+
+export const getMovieListState = createSelector(
+    getMovieFeatureState,
+    state => state.movies
+)

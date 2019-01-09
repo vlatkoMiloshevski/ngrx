@@ -1,10 +1,13 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { ErrorService } from '../services/error-handler.service';
 import { Covers } from '../models/covers';
 import { MovieStateModel } from '../state/movies-state.model';
-import { CoverState } from '../state/covers-state.model';
+import { CoverStateModel } from '../state/covers-state.model';
 import { StateModel } from '../state/state.model';
+import { getMovieListState } from '../state/movies.reducer';
+import { Movie } from '../models/movie';
+import { getShowLargeImages } from '../state/covers.reducer';
 
 @Component({
   selector: 'app-covers',
@@ -23,11 +26,11 @@ export class CoversComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit() {
-    this.store.select('movies').subscribe(
+    this.store.pipe(select(getMovieListState)).subscribe(
       this.drawCheckedMoviesCovers.bind(this),
       this.errorService.errorHandler.bind(this)
     )
-    this.store.select('covers').subscribe(
+    this.store.pipe(select(getShowLargeImages)).subscribe(
       this.handleImagesSize.bind(this),
       this.errorService.errorHandler.bind(this)
     )
@@ -43,19 +46,19 @@ export class CoversComponent implements OnInit, OnChanges {
     })
   }
 
-  drawCheckedMoviesCovers(state: MovieStateModel) {
-    if (state && state.movies) {
-      state.movies.forEach(movie => movie.checked ? this.covers.push({ name: movie.name, coverUrl: movie.coverUrl }) : null);
+  drawCheckedMoviesCovers(movieList: Array<Movie>) {
+    if (movieList && movieList.length) {
+      movieList.forEach(movie => this.covers.push({ name: movie.name, coverUrl: movie.coverUrl }));
     }
   }
 
-  handleImagesSize(covers: CoverState) {
+  handleImagesSize(showLargeImages: boolean) {
     this.imageWidth = "150";
     this.checked = false;
 
-    if (covers) {
-      this.imageWidth = covers.showLargeImages ? "200" : "150";
-      this.checked = covers.showLargeImages ? true : false;
+    if (showLargeImages!=undefined) {
+      this.imageWidth = showLargeImages ? "200" : "150";
+      this.checked = showLargeImages ? true : false;
     }
   }
 

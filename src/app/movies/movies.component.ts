@@ -1,10 +1,11 @@
 import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { Movie } from '../models/movie';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { ErrorService } from '../services/error-handler.service';
 import { ApiService } from '../services/api-service';
 import { MovieStateModel } from '../state/movies-state.model';
 import { StateModel } from '../state/state.model';
+import { getMovieListState } from '../state/movies.reducer';
 
 @Component({
   selector: 'app-movies',
@@ -26,7 +27,7 @@ export class MoviesComponent implements OnInit, OnChanges {
       this.errorService.errorHandler.bind(this)
     )
 
-    this.store.select('movies').subscribe(
+    this.store.pipe(select(getMovieListState)).subscribe(
       this.handleMoviesCheckedState.bind(this),
       this.errorService.errorHandler.bind(this)
     )
@@ -43,9 +44,9 @@ export class MoviesComponent implements OnInit, OnChanges {
   }
 
   // handle movies state
-  handleMoviesCheckedState(stateMovies: MovieStateModel) {
-    if (stateMovies) {
-      this.movies.forEach(movie => stateMovies.movies.find(stateMovie => stateMovie.id == movie.id) ? movie.checked = true : null)
+  handleMoviesCheckedState(movieList: Array<Movie>) {
+    if (movieList && movieList.length) {
+      this.movies.forEach(movie => movieList.find(stateMovie => stateMovie.id == movie.id) ? movie.checked = true : null)
     }
   }
 
