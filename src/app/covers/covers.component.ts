@@ -8,6 +8,7 @@ import { StateModel } from '../state/state.model';
 import { getMovieListState } from '../state/movies.reducer';
 import { Movie } from '../models/movie';
 import { getShowLargeImages } from '../state/covers.reducer';
+import * as coverActions from '../state/covers.actions';
 
 @Component({
   selector: 'app-covers',
@@ -40,10 +41,7 @@ export class CoversComponent implements OnInit, OnChanges {
   }
 
   onCheckboxModelChange(changeImageSize) {
-    this.store.dispatch({
-      type: "TOGGLE_IMAGE_SIZE",
-      payload: changeImageSize
-    })
+    this.store.dispatch(new coverActions.HandleToggleLargeImages(changeImageSize))
   }
 
   drawCheckedMoviesCovers(movieList: Array<Movie>) {
@@ -56,7 +54,7 @@ export class CoversComponent implements OnInit, OnChanges {
     this.imageWidth = "150";
     this.checked = false;
 
-    if (showLargeImages!=undefined) {
+    if (showLargeImages != undefined) {
       this.imageWidth = showLargeImages ? "200" : "150";
       this.checked = showLargeImages ? true : false;
     }

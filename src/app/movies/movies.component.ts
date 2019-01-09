@@ -3,9 +3,9 @@ import { Movie } from '../models/movie';
 import { Store, select } from '@ngrx/store';
 import { ErrorService } from '../services/error-handler.service';
 import { ApiService } from '../services/api-service';
-import { MovieStateModel } from '../state/movies-state.model';
 import { StateModel } from '../state/state.model';
 import { getMovieListState } from '../state/movies.reducer';
+import * as movieActions from '../state/movies.actions';
 
 @Component({
   selector: 'app-movies',
@@ -37,10 +37,7 @@ export class MoviesComponent implements OnInit, OnChanges {
   }
 
   changeCheckedValue(movie: Movie) {
-    this.store.dispatch({
-      type: "HANDLE_CHECKED_MOVIES",
-      payload: movie
-    })
+    this.store.dispatch(new movieActions.HandleCheckedMovies(movie));
   }
 
   // handle movies state

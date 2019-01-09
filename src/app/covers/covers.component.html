@@ -2,7 +2,7 @@
 
   <mat-checkbox *ngIf="covers?.length" [(ngModel)]="checked" (ngModelChange)="onCheckboxModelChange($event)">
     <span *ngIf="checked">Pick small sized images</span>
-    <span *ngIf="!checked">Pick large sized images</span>
+    <span *ngIf="!checked">Large sized images</span>
   </mat-checkbox>
 
   <div *ngIf="covers?.length" class="cover-body">

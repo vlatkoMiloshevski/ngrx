@@ -1,9 +1,10 @@
 import { MovieStateModel, initMovieStateModel } from "./movies-state.model";
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { MovieActions, MovieActionTypes } from './movies.actions';
 
-export function moviesReducer(state: MovieStateModel = initMovieStateModel, action): MovieStateModel {
+export function moviesReducer(state: MovieStateModel = initMovieStateModel, action: MovieActions): MovieStateModel {
     switch (action.type) {
-        case "HANDLE_CHECKED_MOVIES":
+        case MovieActionTypes.HandleCheckedMovies:
             return handleMovieCheckedState(state, action);
         default:
             return state;

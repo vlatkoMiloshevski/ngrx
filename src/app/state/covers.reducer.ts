@@ -1,9 +1,10 @@
 import { CoverStateModel, initCoverStateModel } from './covers-state.model';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { CoverAction, CoverActionTypes } from './covers.actions';
 
-export function coversReducer(state: CoverStateModel = initCoverStateModel, action): CoverStateModel {
+export function coversReducer(state: CoverStateModel = initCoverStateModel, action: CoverAction): CoverStateModel {
     switch (action.type) {
-        case "TOGGLE_IMAGE_SIZE":
+        case CoverActionTypes.HandleToggleLargeImages:
             return {
                 ...state,
                 showLargeImages: action.payload
