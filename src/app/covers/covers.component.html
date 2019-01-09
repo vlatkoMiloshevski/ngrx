@@ -3,11 +3,11 @@
   <span *ngIf="!checked">Pick large sized images</span>
 </mat-checkbox>
 
-<div *ngIf="covers?.length">
-  <p *ngFor="let cover of covers" style="display: grid">
-    <label>{{cover.name}}</label>
+<div *ngIf="covers?.length" class="cover-body">
+  <div *ngFor="let cover of covers" class="cover-body-item">
+    <h3>{{cover.name}}</h3>
     <img [src]="cover.coverUrl" [width]="imageWidth" />
-  </p>
+  </div>
 </div>
 
 <p *ngIf="covers?.length==0">

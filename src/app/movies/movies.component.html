@@ -1,5 +1,17 @@
-<h2>Pick your fav movie series</h2>
+<div class="movie-container">
 
-<div *ngFor="let movie of movies">
-  <mat-checkbox [(ngModel)]="movie.checked" (ngModelChange)="changeCheckedValue(movie)">{{movie.name}}</mat-checkbox>
+  <div class="movie-title">
+      Pick your fav movie series
+  </div>
+
+  <div class="movie-body">
+    <div *ngFor="let movie of movies">
+      <mat-checkbox [(ngModel)]="movie.checked" (ngModelChange)="changeCheckedValue(movie)">{{movie.name}}</mat-checkbox>
+    </div>
+  </div>
+
+  <div class="movie-nav">
+    <a routerLink="/covers">Done? Go to covers</a>
+  </div>
+
 </div>

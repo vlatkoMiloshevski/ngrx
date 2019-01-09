@@ -50,11 +50,11 @@ export class CoversComponent implements OnInit, OnChanges {
   }
 
   handleImagesSize(covers) {
-    this.imageWidth = "200";
+    this.imageWidth = "150";
     this.checked = false;
 
     if (covers) {
-      this.imageWidth = covers.showLargeImages ? "400" : "200";
+      this.imageWidth = covers.showLargeImages ? "200" : "150";
       this.checked = covers.showLargeImages ? true : false;
     }
   }

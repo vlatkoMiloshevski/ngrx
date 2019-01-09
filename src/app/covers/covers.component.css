@@ -1,0 +1,7 @@
+.cover-body{
+    display: flex;
+}
+
+.cover-body-item{
+    flex:1;
+}
