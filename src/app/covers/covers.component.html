@@ -7,7 +7,9 @@
 
   <div *ngIf="covers?.length" class="cover-body">
     <div *ngFor="let cover of covers" class="cover-body-item">
-      <h4>{{cover.name}}</h4>
+      <div class="cover-title" [style.width.px]="imageWidth">
+        <h4>{{cover.name}}</h4>
+      </div>
       <img [src]="cover.coverUrl" [width]="imageWidth" />
     </div>
   </div>
