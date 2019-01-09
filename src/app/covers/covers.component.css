@@ -1,7 +1,16 @@
+.covers-container{
+    padding: 20px;
+}
+
 .cover-body{
     display: flex;
+    justify-content: center;
 }
 
 .cover-body-item{
-    flex:1;
+    margin:10px;
+}
+
+.cover-body-item > h4{
+    text-align: center;
 }

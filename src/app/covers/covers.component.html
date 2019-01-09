@@ -1,15 +1,19 @@
-<mat-checkbox *ngIf="covers?.length" [(ngModel)]="checked" (ngModelChange)="onCheckboxModelChange($event)">
-  <span *ngIf="checked">Pick small sized images</span>
-  <span *ngIf="!checked">Pick large sized images</span>
-</mat-checkbox>
+<div class="covers-container">
 
-<div *ngIf="covers?.length" class="cover-body">
-  <div *ngFor="let cover of covers" class="cover-body-item">
-    <h3>{{cover.name}}</h3>
-    <img [src]="cover.coverUrl" [width]="imageWidth" />
+  <mat-checkbox *ngIf="covers?.length" [(ngModel)]="checked" (ngModelChange)="onCheckboxModelChange($event)">
+    <span *ngIf="checked">Pick small sized images</span>
+    <span *ngIf="!checked">Pick large sized images</span>
+  </mat-checkbox>
+
+  <div *ngIf="covers?.length" class="cover-body">
+    <div *ngFor="let cover of covers" class="cover-body-item">
+      <h4>{{cover.name}}</h4>
+      <img [src]="cover.coverUrl" [width]="imageWidth" />
+    </div>
   </div>
-</div>
 
-<p *ngIf="covers?.length==0">
-  No movies checked
-</p>
+  <p *ngIf="covers?.length==0">
+    No movies checked
+  </p>
+
+</div>

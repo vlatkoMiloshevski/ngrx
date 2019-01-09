@@ -1,6 +1,7 @@
 .movie-container{
     display: flex;
     padding: 20px;
+    justify-content: space-between;
 }
 
 .movie-title{
@@ -16,4 +17,20 @@
 .movie-nav{
     flex: 1;
     order: 3;
+}
+
+
+.movie-container > div{
+    margin: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 30%;
+}
+
+.movie-container > div:nth-child(1){
+    background-color:lightblue
+}
+
+.movie-container > div:nth-child(3){
+    background-color:lightblue
 }
