@@ -1,6 +1,6 @@
-import { Movie } from "../models/movie";
+import { MovieStateModel } from "./movies-state.model";
 
-export function moviesReducer(state, action): MovieState {
+export function moviesReducer(state, action): MovieStateModel {
     switch (action.type) {
         case "HANDLE_CHECKED_MOVIES":
             return handleMovieCheckedState(state, action);
@@ -18,13 +18,8 @@ function handleMovieCheckedState(state, action) {
         action.payload.checked = !action.payload.checked;
         movies.push(action.payload);
     }
-    console.log(movies)
     return {
         ...state,
         movies
     }
-}
-
-export interface MovieState {
-    movies: Array<Movie>;
 }

@@ -3,7 +3,8 @@ import { Movie } from '../models/movie';
 import { Store } from '@ngrx/store';
 import { ErrorService } from '../services/error-handler.service';
 import { ApiService } from '../services/api-service';
-import { MovieState } from '../state/movies.reducer';
+import { MovieStateModel } from '../state/movies-state.model';
+import { StateModel } from '../state/state.model';
 
 @Component({
   selector: 'app-movies',
@@ -14,7 +15,7 @@ export class MoviesComponent implements OnInit, OnChanges {
   movies: Array<Movie> = [];
 
   constructor(
-    private store: Store<MovieState>,
+    private store: Store<StateModel>,
     private apiService: ApiService,
     private errorService: ErrorService
   ) { }
@@ -42,7 +43,7 @@ export class MoviesComponent implements OnInit, OnChanges {
   }
 
   // handle movies state
-  handleMoviesCheckedState(stateMovies) {
+  handleMoviesCheckedState(stateMovies: MovieStateModel) {
     if (stateMovies) {
       this.movies.forEach(movie => stateMovies.movies.find(stateMovie => stateMovie.id == movie.id) ? movie.checked = true : null)
     }

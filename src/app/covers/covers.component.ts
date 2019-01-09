@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Movie } from '../models/movie';
 import { Store } from '@ngrx/store';
 import { ErrorService } from '../services/error-handler.service';
 import { Covers } from '../models/covers';
-import { CoverState } from '../state/covers.reducer';
-import { MovieState, moviesReducer } from '../state/movies.reducer';
+import { MovieStateModel } from '../state/movies-state.model';
+import { CoverState } from '../state/covers-state.model';
+import { StateModel } from '../state/state.model';
 
 @Component({
   selector: 'app-covers',
@@ -18,7 +18,7 @@ export class CoversComponent implements OnInit, OnChanges {
   imageWidth: string;
 
   constructor(
-    private store: Store<MovieState>,
+    private store: Store<StateModel>,
     private errorService: ErrorService
   ) { }
 
@@ -43,13 +43,13 @@ export class CoversComponent implements OnInit, OnChanges {
     })
   }
 
-  drawCheckedMoviesCovers(state: MovieState) {
+  drawCheckedMoviesCovers(state: MovieStateModel) {
     if (state && state.movies) {
       state.movies.forEach(movie => movie.checked ? this.covers.push({ name: movie.name, coverUrl: movie.coverUrl }) : null);
     }
   }
 
-  handleImagesSize(covers) {
+  handleImagesSize(covers: CoverState) {
     this.imageWidth = "150";
     this.checked = false;
 
