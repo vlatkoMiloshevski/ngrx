@@ -1,6 +1,6 @@
 import { MovieStateModel, initMovieStateModel } from "./movies-state.model";
-import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { MovieActions, MovieActionTypes } from './movies.actions';
+import { Movie } from "../models/movie";
 
 export function moviesReducer(state: MovieStateModel = initMovieStateModel, action: MovieActions): MovieStateModel {
     switch (action.type) {
@@ -9,14 +9,12 @@ export function moviesReducer(state: MovieStateModel = initMovieStateModel, acti
                 ...state,
                 movies: [...action.payload]
             }
+        case MovieActionTypes.AddNewMovie:
+            return {
+                ...state,
+                movies: state.movies.concat(new Movie())
+            }
         default:
             return state;
     }
 }
-
-const getMovieFeatureState = createFeatureSelector<MovieStateModel>('movies');
-
-export const getMovieListState = createSelector(
-    getMovieFeatureState,
-    state => state.movies
-)

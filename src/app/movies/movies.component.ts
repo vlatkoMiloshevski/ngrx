@@ -4,8 +4,8 @@ import { Store, select } from '@ngrx/store';
 import { ErrorService } from '../services/error-handler.service';
 import { ApiService } from '../services/api-service';
 import { StateModel } from '../state/state.model';
-import { getMovieListState } from '../state/movies.reducer';
 import * as movieActions from '../state/movies.actions';
+import { getMovieListState } from '../state/movies.selector';
 
 @Component({
   selector: 'app-movies',
@@ -50,9 +50,14 @@ export class MoviesComponent implements OnInit, OnChanges {
     )
   }
 
+  addNewMovie(){
+    this.store.dispatch(new movieActions.AddNewMovie());
+  }
+
   //loading movies helper
   handleLoadingMovies(movie: Movie) {
     this.movies.push(movie);
   }
 
 }
+ 

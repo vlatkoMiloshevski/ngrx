@@ -2,13 +2,11 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { Store, select } from '@ngrx/store';
 import { ErrorService } from '../services/error-handler.service';
 import { Covers } from '../models/covers';
-import { MovieStateModel } from '../state/movies-state.model';
-import { CoverStateModel } from '../state/covers-state.model';
 import { StateModel } from '../state/state.model';
-import { getMovieListState } from '../state/movies.reducer';
 import { Movie } from '../models/movie';
-import { getShowLargeImages } from '../state/covers.reducer';
 import * as coverActions from '../state/covers.actions';
+import { getMovieListState } from '../state/movies.selector';
+import { getShowLargeImages } from '../state/covers.selector';
 
 @Component({
   selector: 'app-covers',

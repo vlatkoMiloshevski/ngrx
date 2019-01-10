@@ -14,6 +14,7 @@
     <div *ngFor="let movie of movies">
       <mat-checkbox [(ngModel)]="movie.checked" (ngModelChange)="changeCheckedValue(movie)">{{movie.name}}</mat-checkbox>
     </div>
+    <button *ngIf="movies?.length" mat-stroked-button color="primary" mat-button (click)="addNewMovie()">add empty movie</button>
   </div>
 
   <div class="movie-nav">

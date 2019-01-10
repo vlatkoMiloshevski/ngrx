@@ -1,5 +1,4 @@
 import { CoverStateModel, initCoverStateModel } from './covers-state.model';
-import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { CoverAction, CoverActionTypes } from './covers.actions';
 
 export function coversReducer(state: CoverStateModel = initCoverStateModel, action: CoverAction): CoverStateModel {
@@ -13,10 +12,3 @@ export function coversReducer(state: CoverStateModel = initCoverStateModel, acti
             return state;
     }
 }
-
-const getCoverFeatureState = createFeatureSelector<CoverStateModel>('covers');
-
-export const getShowLargeImages = createSelector(
-    getCoverFeatureState,
-    state => state.showLargeImages
-)
