@@ -22,11 +22,6 @@ export class MoviesComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit() {
-    this.apiService.getInitMovies().subscribe(
-      this.handleLoadingMovies.bind(this),
-      this.errorService.errorHandler.bind(this)
-    )
-
     this.store.pipe(select(getMovieListState)).subscribe(
       this.handleMoviesCheckedState.bind(this),
       this.errorService.errorHandler.bind(this)
@@ -37,14 +32,22 @@ export class MoviesComponent implements OnInit, OnChanges {
   }
 
   changeCheckedValue(movie: Movie) {
-    this.store.dispatch(new movieActions.HandleCheckedMovies(movie));
+    this.store.dispatch(new movieActions.HandleCheckedMovies(this.movies));
   }
 
   // handle movies state
   handleMoviesCheckedState(movieList: Array<Movie>) {
-    if (movieList && movieList.length) {
-      this.movies.forEach(movie => movieList.find(stateMovie => stateMovie.id == movie.id) ? movie.checked = true : null)
-    }
+    this.movies = movieList;
+    // if (movieList && movieList.length) {
+    //   this.movies.forEach(movie => movieList.find(stateMovie => stateMovie.id == movie.id) ? movie.checked = true : null)
+    // }
+  }
+
+  loadMovies() {
+    this.apiService.getInitMovies().subscribe(
+      this.handleLoadingMovies.bind(this),
+      this.errorService.errorHandler.bind(this)
+    )
   }
 
   //loading movies helper

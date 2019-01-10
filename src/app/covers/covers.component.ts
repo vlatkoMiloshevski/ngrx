@@ -45,9 +45,7 @@ export class CoversComponent implements OnInit, OnChanges {
   }
 
   drawCheckedMoviesCovers(movieList: Array<Movie>) {
-    if (movieList && movieList.length) {
-      movieList.forEach(movie => this.covers.push({ name: movie.name, coverUrl: movie.coverUrl }));
-    }
+    this.covers = movieList.filter(movie => movie.checked);
   }
 
   handleImagesSize(showLargeImages: boolean) {

@@ -8,7 +8,7 @@ export enum MovieActionTypes {
 export class HandleCheckedMovies implements Action {
     readonly type = MovieActionTypes.HandleCheckedMovies;
 
-    constructor(public payload: Movie) {}
+    constructor(public payload: Array<Movie>) {}
 }
 
 export type MovieActions = HandleCheckedMovies;
