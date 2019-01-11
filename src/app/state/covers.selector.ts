@@ -8,3 +8,8 @@ export const getShowLargeImages = createSelector(
     getCoverFeatureState,
     state => state.showLargeImages
 )
+
+export const getCover = createSelector(
+    getCoverFeatureState,
+    state => state.cover
+)

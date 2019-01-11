@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Movie } from '../models/movie';
 import { Observable, from } from 'rxjs';
+import { ErrorService } from './error-handler.service';
+import { tap, catchError } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -9,8 +11,16 @@ import { Observable, from } from 'rxjs';
 export class ApiService {
 
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        private errorService: ErrorService
     ) { }
+
+    getNewCover(): Observable<any> {
+        return this.http.get('https://jsonplaceholder.typicoded.com/photos/1')
+            .pipe(
+                catchError(this.errorService.errorHandler.bind(this))
+            );
+    }
 
     getInitMovies(): Observable<Movie> {
         // return this.http.get<Array<Movie>>('../app/mock/get-movies.json');

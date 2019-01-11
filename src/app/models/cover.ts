@@ -1,4 +1,4 @@
-export class Covers {
+export class Cover {
     name: string;
     coverUrl: string;
 }

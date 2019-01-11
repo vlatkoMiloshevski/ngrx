@@ -8,6 +8,11 @@ export function coversReducer(state: CoverStateModel = initCoverStateModel, acti
                 ...state,
                 showLargeImages: action.payload
             };
+        case CoverActionTypes.LoadSuccess:
+            return {
+                ...state,
+                cover: action.payload
+            }
         default:
             return state;
     }

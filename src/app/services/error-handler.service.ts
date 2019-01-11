@@ -8,6 +8,6 @@ export class ErrorService {
     constructor() { }
 
     errorHandler(error) {
-        console.log(error);
+        console.error(error);
     }
 }

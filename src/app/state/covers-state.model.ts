@@ -1,8 +1,10 @@
 
 export interface CoverStateModel {
-    showLargeImages: boolean
+    showLargeImages: boolean;
+    cover: any;
 }
 
 export const initCoverStateModel: CoverStateModel = {
-    showLargeImages: false
+    showLargeImages: false,
+    cover: null
 }

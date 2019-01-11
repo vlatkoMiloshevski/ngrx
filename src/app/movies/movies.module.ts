@@ -32,4 +32,4 @@ const moviesRoutes: Routes = [];
         ApiService
     ]
 })
-export class MoviesModule { }
+export class MoviesModule { } 
