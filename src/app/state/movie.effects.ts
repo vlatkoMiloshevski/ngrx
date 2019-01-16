@@ -15,7 +15,6 @@ export class MovieEffects {
         private actions$: Actions,
         private apiService: ApiService
     ) {
-        console.log("Movie Effects - ctor")
     }
 
     @Effect()
