@@ -35,12 +35,17 @@ export class MoviesComponent implements OnInit, OnChanges, OnDestroy {
     this.store.dispatch(new movieActions.HandleCheckedMovies(this.movies));
   }
 
+  addNewMovie(movieTitle, movieUrl) {
+    let movie: Movie = new Movie(this.movies.length, movieTitle, true, movieUrl);
+    this.store.dispatch(new movieActions.AddMovie(movie));
+  }
+
   // handle movies state
   handleMoviesCheckedState(movieList: Array<Movie>) {
     this.movies = movieList;
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.moviesSub$.unsubscribe();
   }
 }

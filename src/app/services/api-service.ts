@@ -9,14 +9,13 @@ import { catchError } from 'rxjs/operators';
     providedIn: 'root'
 })
 export class ApiService {
+    movieList: Array<Movie>;
 
     constructor(
         private http: HttpClient,
         private errorService: ErrorService
-    ) { }
-
-    getInitMovies(): Observable<any> {
-        let arr: Array<Movie> = [
+    ) {
+        this.movieList = [
             {
                 "id": 1,
                 "name": "House Of Cards",
@@ -54,6 +53,15 @@ export class ApiService {
                 "coverUrl": "https://amp.businessinsider.com/images/56cdf3c86e97c61a008b9659-750-563.jpg"
             }
         ];
-        return of(arr).pipe(catchError(this.errorService.errorHandler.bind(this)));
+    }
+
+    addNewMovie(movie: Movie): any {
+        return of(movie)
+        .pipe(catchError(this.errorService.errorHandler.bind(this)));
+    }
+
+    getInitMovies(): Observable<any> {
+        return of(this.movieList)
+        .pipe(catchError(this.errorService.errorHandler.bind(this)));
     }
 }

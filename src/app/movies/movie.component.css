@@ -10,13 +10,13 @@
     padding: 0px !important;
 }
 
-.movie-title > .section-1{
+.movie-title > .section-1 {
     flex: 1;
     padding: 10px;
     background-color: lightblue;
 }
 
-.movie-title > .section-2  {
+.movie-title > .section-2 {
     flex: 1;
     padding: 10px;
     background-color: lightgreen;
@@ -44,6 +44,10 @@
 
 .movie-container > div:nth-child(3){
     background-color:lightblue;
+}
+
+.example-full-width{
+    width: 100%;
 }
 
 @media (min-width: 600px){

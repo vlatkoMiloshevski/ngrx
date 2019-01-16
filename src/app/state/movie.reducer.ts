@@ -12,7 +12,12 @@ export function moviesReducer(state: MovieStateModel = initMovieStateModel, acti
         case MovieActionTypes.LoadSuccess:
             return {
                 ...state,
-                movies: action.payload
+                movies: [...action.payload]
+            }
+        case MovieActionTypes.AddMovieSuccess:
+            return {
+                ...state,
+                movies: [...state.movies, action.payload]
             }
         default:
             return state;

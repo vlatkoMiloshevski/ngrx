@@ -5,7 +5,8 @@ import { Actions } from "@ngrx/effects";
 import { mergeMap, map, catchError, tap } from 'rxjs/operators';
 import { ApiService } from "../services/api-service";
 import { MovieStateModel } from './movie-state.model';
-import { of } from "rxjs";
+import { of, Observable } from "rxjs";
+import { Action } from '@ngrx/store';
 
 @Injectable()
 export class MovieEffects {
@@ -18,11 +19,20 @@ export class MovieEffects {
     }
 
     @Effect()
-    loadMovies$ = this.actions$.pipe(
+    loadMovies$: Observable<Action> = this.actions$.pipe(
         ofType(movieActions.MovieActionTypes.Load),
         mergeMap((action: movieActions.Load) => this.apiService.getInitMovies().pipe(
             map((movies: Array<MovieStateModel>) => (new movieActions.LoadSuccess(movies))),
             catchError(error => of(new movieActions.LoadFail(error)))
+        ))
+    )
+
+    @Effect()
+    addMovie$: Observable<Action> = this.actions$.pipe(
+        ofType(movieActions.MovieActionTypes.AddMovie),
+        mergeMap((action: movieActions.AddMovie) => this.apiService.addNewMovie(action.payload).pipe(
+            map((movies: Array<MovieStateModel>) => (new movieActions.AddMovieSuccess(movies))),
+            catchError(error => of(new movieActions.AddMovieFail(error)))
         ))
     )
 
