@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { MoviesComponent } from "./movies.component";
+import { MoviesComponent } from "./movie.component";
 import { RouterModule, Routes } from "@angular/router";
 import { StoreModule } from "@ngrx/store";
 import { ErrorService } from "../services/error-handler.service";
@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { HttpModule } from "@angular/http";
 import { BrowserModule } from "@angular/platform-browser";
-import { moviesReducer } from "../state/movies.reducer";
+import { moviesReducer } from "../state/movie.reducer";
 import { MaterialModule } from "../shared/material.module";
 import { MovieEffects } from '../state/movie.effects';
 import { EffectsModule } from "@ngrx/effects";

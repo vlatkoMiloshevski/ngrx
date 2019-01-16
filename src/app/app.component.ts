@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie } from './models/movie';
+import { Movie } from './models/movie-model';
 import { Store } from '@ngrx/store';
 import { StateModel } from './state/state.model';
-import * as movieActions from '../app/state/movies.actions';
+import * as movieActions from './state/movie.actions';
 
 @Component({
   selector: 'app-root',

@@ -1,6 +1,6 @@
-import { MovieStateModel, initMovieStateModel } from "./movies-state.model";
-import { MovieActions, MovieActionTypes } from './movies.actions';
-import { Movie } from "../models/movie";
+import { MovieStateModel, initMovieStateModel } from "./movie-state.model";
+import { MovieActions, MovieActionTypes } from './movie.actions';
+import { Movie } from "../models/movie-model";
 
 export function moviesReducer(state: MovieStateModel = initMovieStateModel, action: MovieActions): MovieStateModel {
     switch (action.type) {

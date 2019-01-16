@@ -15,12 +15,12 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from "@ngrx/store"
 
 import { AppComponent } from './app.component';
-import { MoviesComponent } from './movies/movies.component';
-import { CoversComponent } from './covers/covers.component';
+import { MoviesComponent } from './movies/movie.component';
+import { CoversComponent } from './covers/cover.component';
 import { ErrorService } from './services/error-handler.service';
 import { ApiService } from './services/api-service';
-import { MoviesModule } from './movies/movies.module';
-import { CoversModule } from './covers/covers.module';
+import { MoviesModule } from './movies/movie.module';
+import { CoversModule } from './covers/cover.module';
 import { MaterialModule } from './shared/material.module';
 
 const appRoutes: Routes = [

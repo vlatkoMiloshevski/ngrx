@@ -1,5 +1,5 @@
 import { Action } from "@ngrx/store";
-import { Cover } from "../models/cover";
+import { Cover } from "../models/cover-model";
 
 export enum CoverActionTypes {
     HandleToggleLargeImages = '[COVER] TOGGLE_IMAGE_SIZE',

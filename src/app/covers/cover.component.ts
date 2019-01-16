@@ -1,41 +1,42 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, OnDestroy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { ErrorService } from '../services/error-handler.service';
-import { Cover } from '../models/cover';
+import { Cover } from '../models/cover-model';
 import { StateModel } from '../state/state.model';
-import { Movie } from '../models/movie';
-import * as coverActions from '../state/covers.actions';
-import { getMovieListState } from '../state/movies.selector';
-import * as fromCover from '../state/covers.selector';
+import { Movie } from '../models/movie-model';
+import * as coverActions from '../state/cover.actions';
+import * as fromMovie from '../state/movie.selector';
+import * as fromCover from '../state/cover.selector';
 import { ApiService } from '../services/api-service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-covers',
-  templateUrl: './covers.component.html',
-  styleUrls: ['./covers.component.css']
+  templateUrl: './cover.component.html',
+  styleUrls: ['./cover.component.css']
 })
-export class CoversComponent implements OnInit, OnChanges {
+export class CoversComponent implements OnInit, OnChanges, OnDestroy {
 
   covers: Array<Cover> = [];
   checked: boolean;
   imageWidth: string;
   covers$: Observable<any>;
+  moviesSub$: Subscription;
+  imageWidthSub$: Subscription;
 
   constructor(
     private store: Store<StateModel>,
-    private apiService: ApiService,
     private errorService: ErrorService
   ) { }
 
   ngOnInit() {
     console.log("CoverComponent - onInit")
-    this.store.pipe(select(getMovieListState)).subscribe(
+    this.moviesSub$ = this.store.pipe(select(fromMovie.getMovieListState)).subscribe(
       this.drawCheckedMoviesCovers.bind(this),
       this.errorService.errorHandler.bind(this)
     );
 
-    this.store.pipe(select(fromCover.getShowLargeImages)).subscribe(
+    this.imageWidthSub$ = this.store.pipe(select(fromCover.getShowLargeImages)).subscribe(
       this.handleImagesSize.bind(this),
       this.errorService.errorHandler.bind(this)
     );
@@ -62,4 +63,8 @@ export class CoversComponent implements OnInit, OnChanges {
     }
   }
 
+  ngOnDestroy() {
+    this.moviesSub$.unsubscribe();
+    this.imageWidthSub$.unsubscribe();
+  }
 }

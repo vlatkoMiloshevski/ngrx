@@ -1,5 +1,5 @@
 import { Action } from "@ngrx/store";
-import { Movie } from '../models/movie';
+import { Movie } from '../models/movie-model';
 
 export enum MovieActionTypes {
     HandleCheckedMovies = '[MOVIE] HANDLE_CHECKED_MOVIES',

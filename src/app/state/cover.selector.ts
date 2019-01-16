@@ -1,6 +1,6 @@
 
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { CoverStateModel } from './covers-state.model';
+import { CoverStateModel } from './cover-state.model';
 
 const getCoverFeatureState = createFeatureSelector<CoverStateModel>('covers');
 

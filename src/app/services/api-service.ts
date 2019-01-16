@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Movie } from '../models/movie';
+import { Movie } from '../models/movie-model';
 import { Observable, from, of } from 'rxjs';
 import { ErrorService } from './error-handler.service';
 import { catchError } from 'rxjs/operators';

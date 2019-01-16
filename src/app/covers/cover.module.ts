@@ -7,11 +7,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { HttpModule } from "@angular/http";
 import { BrowserModule } from "@angular/platform-browser";
-import { CoversComponent } from "./covers.component";
-import { coversReducer } from "../state/covers.reducer";
+import { CoversComponent } from "./cover.component";
+import { coversReducer } from "../state/cover.reducer";
 import { MaterialModule } from "../shared/material.module";
-import { EffectsModule } from '@ngrx/effects';
-
 
 const moviesRoutes: Routes = [];
 

@@ -1,5 +1,5 @@
-import { CoverStateModel, initCoverStateModel } from './covers-state.model';
-import { CoverAction, CoverActionTypes } from './covers.actions';
+import { CoverStateModel, initCoverStateModel } from './cover-state.model';
+import { CoverAction, CoverActionTypes } from './cover.actions';
 
 export function coversReducer(state: CoverStateModel = initCoverStateModel, action: CoverAction): CoverStateModel {
     switch (action.type) {

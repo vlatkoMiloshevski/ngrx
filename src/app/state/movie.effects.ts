@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Effect, ofType } from "@ngrx/effects";
-import * as movieActions from './movies.actions'
+import * as movieActions from './movie.actions'
 import { Actions } from "@ngrx/effects";
 import { mergeMap, map, catchError, tap } from 'rxjs/operators';
 import { ApiService } from "../services/api-service";
-import { MovieStateModel } from './movies-state.model';
+import { MovieStateModel } from './movie-state.model';
 import { of } from "rxjs";
 
 @Injectable()
