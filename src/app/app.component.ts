@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie } from './models/movie-model';
 import { Store } from '@ngrx/store';
 import { StateModel } from './state/state.model';
 import * as movieActions from './state/movie.actions';
