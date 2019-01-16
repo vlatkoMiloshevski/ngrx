@@ -21,7 +21,6 @@ export class MovieEffects {
     @Effect()
     loadMovies$ = this.actions$.pipe(
         ofType(movieActions.MovieActionTypes.Load),
-        tap(x => console.log(x)),
         mergeMap((action: movieActions.Load) => this.apiService.getInitMovies().pipe(
             map((movies: Array<MovieStateModel>) => (new movieActions.LoadSuccess(movies))),
             catchError(error => of(new movieActions.LoadFail(error)))

@@ -30,7 +30,6 @@ export class CoversComponent implements OnInit, OnChanges, OnDestroy {
   ) { }
 
   ngOnInit() {
-    console.log("CoverComponent - onInit")
     this.moviesSub$ = this.store.pipe(select(fromMovie.getMovieListState)).subscribe(
       this.drawCheckedMoviesCovers.bind(this),
       this.errorService.errorHandler.bind(this)
@@ -54,13 +53,8 @@ export class CoversComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   handleImagesSize(showLargeImages: boolean) {
-    this.imageWidth = "150";
-    this.checked = false;
-
-    if (showLargeImages != undefined) {
-      this.imageWidth = showLargeImages ? "200" : "150";
-      this.checked = showLargeImages ? true : false;
-    }
+    this.imageWidth = showLargeImages ? "200" : "150";
+    this.checked = showLargeImages ? true : false;
   }
 
   ngOnDestroy() {
