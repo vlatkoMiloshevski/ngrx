@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Movie } from '../models/movie';
-import { Observable, from } from 'rxjs';
+import { Observable, from, of } from 'rxjs';
 import { ErrorService } from './error-handler.service';
-import { tap, catchError } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -15,15 +15,7 @@ export class ApiService {
         private errorService: ErrorService
     ) { }
 
-    getNewCover(): Observable<any> {
-        return this.http.get('https://jsonplaceholder.typicoded.com/photos/1')
-            .pipe(
-                catchError(this.errorService.errorHandler.bind(this))
-            );
-    }
-
-    getInitMovies(): Observable<Movie> {
-        // return this.http.get<Array<Movie>>('../app/mock/get-movies.json');
+    getInitMovies(): Observable<any> {
         let arr: Array<Movie> = [
             {
                 "id": 1,
@@ -62,7 +54,6 @@ export class ApiService {
                 "coverUrl": "https://amp.businessinsider.com/images/56cdf3c86e97c61a008b9659-750-563.jpg"
             }
         ];
-
-        return from(arr);
+        return of(arr).pipe(catchError(this.errorService.errorHandler.bind(this)));
     }
 }

@@ -11,7 +11,6 @@ import { CoversComponent } from "./covers.component";
 import { coversReducer } from "../state/covers.reducer";
 import { MaterialModule } from "../shared/material.module";
 import { EffectsModule } from '@ngrx/effects';
-import { CoverEffects } from '../state/cover.effect';
 
 
 const moviesRoutes: Routes = [];
@@ -27,8 +26,7 @@ const moviesRoutes: Routes = [];
         BrowserModule,
         FormsModule,
         RouterModule.forChild(moviesRoutes),
-        StoreModule.forFeature('covers', coversReducer),
-        EffectsModule.forFeature([CoverEffects])
+        StoreModule.forFeature('covers', coversReducer)
     ],
     providers: [
         ErrorService,

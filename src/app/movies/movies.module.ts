@@ -10,6 +10,8 @@ import { HttpModule } from "@angular/http";
 import { BrowserModule } from "@angular/platform-browser";
 import { moviesReducer } from "../state/movies.reducer";
 import { MaterialModule } from "../shared/material.module";
+import { MovieEffects } from '../state/movie.effects';
+import { EffectsModule } from "@ngrx/effects";
 
 
 const moviesRoutes: Routes = [];
@@ -25,7 +27,8 @@ const moviesRoutes: Routes = [];
         BrowserModule,
         FormsModule,
         RouterModule.forChild(moviesRoutes),
-        StoreModule.forFeature('movies', moviesReducer)
+        StoreModule.forFeature('movies', moviesReducer),
+        EffectsModule.forFeature([MovieEffects])
     ],
     providers: [
         ErrorService,

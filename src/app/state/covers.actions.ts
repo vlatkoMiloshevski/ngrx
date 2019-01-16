@@ -14,21 +14,5 @@ export class HandleToggleLargeImages implements Action {
     constructor(public payload: boolean) { }
 }
 
-export class Load implements Action {
-    readonly type = CoverActionTypes.Load;
-}
 
-export class LoadSuccess implements Action {
-    readonly type = CoverActionTypes.LoadSuccess;
-
-    constructor(public payload: any ) { } 
-}
-
-export class LoadFail implements Action {
-    readonly type = CoverActionTypes.LoadFail;
-
-    constructor(public payload: any ) { } 
-}
-
-
-export type CoverAction = HandleToggleLargeImages | LoadSuccess | LoadFail | Load
+export type CoverAction = HandleToggleLargeImages

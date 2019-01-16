@@ -7,3 +7,4 @@ export const getMovieListState = createSelector(
     getMovieFeatureState,
     state => state.movies
 )
+

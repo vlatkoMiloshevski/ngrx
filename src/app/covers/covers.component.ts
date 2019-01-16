@@ -8,7 +8,7 @@ import * as coverActions from '../state/covers.actions';
 import { getMovieListState } from '../state/movies.selector';
 import * as fromCover from '../state/covers.selector';
 import { ApiService } from '../services/api-service';
-import { AddNewMovie } from '../state/movies.actions';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-covers',
@@ -20,6 +20,7 @@ export class CoversComponent implements OnInit, OnChanges {
   covers: Array<Cover> = [];
   checked: boolean;
   imageWidth: string;
+  covers$: Observable<any>;
 
   constructor(
     private store: Store<StateModel>,
@@ -36,19 +37,6 @@ export class CoversComponent implements OnInit, OnChanges {
 
     this.store.pipe(select(fromCover.getShowLargeImages)).subscribe(
       this.handleImagesSize.bind(this),
-      this.errorService.errorHandler.bind(this)
-    );
-
-    // USING API SERVICE
-    // this.apiService.getNewCover().subscribe(
-    //   data => console.log(data),
-    //   this.errorService.errorHandler.bind(this)
-    // )
-
-    // USING ngRx EFFECTS
-    this.store.dispatch(new coverActions.Load());
-    this.store.pipe(select(fromCover.getCover)).subscribe(
-      data => console.log(data),
       this.errorService.errorHandler.bind(this)
     );
   }

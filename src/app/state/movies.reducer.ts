@@ -9,10 +9,10 @@ export function moviesReducer(state: MovieStateModel = initMovieStateModel, acti
                 ...state,
                 movies: [...action.payload]
             }
-        case MovieActionTypes.AddNewMovie:
+        case MovieActionTypes.LoadSuccess:
             return {
                 ...state,
-                movies: state.movies.concat(new Movie())
+                movies: action.payload
             }
         default:
             return state;

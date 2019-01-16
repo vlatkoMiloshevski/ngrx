@@ -1,7 +1,7 @@
 <div class="covers-container">
 
   <mat-checkbox *ngIf="covers?.length" [(ngModel)]="checked" (ngModelChange)="onCheckboxModelChange($event)">
-    <span *ngIf="checked">Pick small sized images</span>
+    <span *ngIf="checked">Uncheck to see small sized images</span>
     <span *ngIf="!checked">Large sized images</span>
   </mat-checkbox>
 
@@ -10,7 +10,7 @@
       <div class="cover-title" [style.width.px]="imageWidth">
         <h4>{{cover.name}}</h4>
       </div>
-      <img [src]="cover.coverUrl" [width]="imageWidth" />
+      <img [src]="cover.coverUrl" [style.width.px]="imageWidth" />
     </div>
   </div>
 
