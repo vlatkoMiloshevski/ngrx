@@ -17,3 +17,6 @@ Check fav movies from the movie list and go to the Cover in order to see your fa
 Select whether you want to see small/large images.
 Resize your web browser in order to see the responsiveness done with the flexbox layout pattern.
 NOTE: Every user interaction is persisted via ngRx 
+
+## DEMO
+https://redux-ngrx.firebaseapp.com
