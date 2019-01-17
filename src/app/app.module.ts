@@ -24,6 +24,7 @@ import { CoversModule } from './covers/cover.module';
 import { MaterialModule } from './shared/material.module';
 
 const appRoutes: Routes = [
+  { path: '', component: MoviesComponent, pathMatch: 'full' },
   { path: 'movies', component: MoviesComponent },
   { path: 'covers', component: CoversComponent }
 ]
